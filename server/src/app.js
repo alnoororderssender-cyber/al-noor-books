@@ -39,25 +39,17 @@ export function createApp() {
       },
     }),
   );
-app.use(
-  cors({
-    origin(origin, cb) {
-      if (!origin || env.allowedOrigins.includes(origin)) return cb(null, true);
-      return cb(null, false); // no CORS headers, instead of throwing a 500
-    },
-    credentials: true,
-  }),
-);
-    app.use(cookieParser());
-
-  // TEMP DEBUG: remove after fixing login
-  app.use((req, _res, next) => {
-    if (req.path.includes('/admin/login')) {
-      console.log('[debug] content-type:', req.headers['content-type'], '| body keys:', Object.keys(req.body || {}));
-    }
-    next();
-  });
-
+  app.use(
+    cors({
+      origin(origin, cb) {
+        if (!origin || env.allowedOrigins.includes(origin)) return cb(null, true);
+        return cb(null, false); // no CORS headers, instead of throwing a 500
+      },
+      credentials: true,
+    }),
+  );
+  app.use(express.json({ limit: '100kb' }));
+  app.use(cookieParser());
   app.use(sanitizeInput);
 
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
