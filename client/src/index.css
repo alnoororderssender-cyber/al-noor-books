@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { @apply bg-white font-sans text-ink antialiased; }
+  h1, h2, h3, h4 { @apply text-navy; }
+  :focus-visible { outline: 2px solid #17365D; outline-offset: 2px; }
+  img { @apply max-w-full; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .page { @apply mx-auto w-full max-w-page px-5 md:px-8 xl:px-12; }
+  .heading-serif { @apply font-serif font-bold tracking-tight text-navy; }
+  .eyebrow { @apply text-xs font-medium uppercase tracking-[0.14em] text-navy-700; }
+
+  .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded px-6 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-navy text-white hover:bg-navy-700; }
+  .btn-outline { @apply btn border border-navy/40 bg-white text-navy hover:border-navy hover:bg-mist; }
+  .btn-sm { @apply h-9 px-4 text-[13px]; }
+  .btn-danger { @apply btn border border-danger/40 bg-white text-danger hover:bg-red-50; }
+
+  .label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .input { @apply h-11 w-full rounded border border-line bg-white px-3.5 text-sm text-ink placeholder:text-slate-400 focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/15; }
+  .input-error { @apply border-danger focus:border-danger focus:ring-danger/15; }
+  textarea.input { @apply h-auto py-3; }
+  .field-error { @apply mt-1.5 text-[13px] text-danger; }
+
+  .card { @apply rounded border border-line bg-white; }
+  .panel { @apply rounded border border-navy/10 bg-tint/60; }
+  .link { @apply text-navy-700 underline-offset-4 hover:underline; }
+}
+
+/* hide scrollbar for the mobile gallery */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
