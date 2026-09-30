@@ -44,6 +44,9 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="page flex items-center justify-between py-4">
           <p className="text-xs text-muted">&copy; AL NOOR BOOKS</p>
+          <Link to="/admin/login" className="text-[12px] text-muted hover:text-navy">
+  Admin
+</Link>
           <div className="flex items-center gap-3 text-navy">
             {socials.map((x) => (
               <a key={x.label} href={x.href} target="_blank" rel="noopener noreferrer" aria-label={x.label} className="grid h-8 w-8 place-items-center rounded hover:bg-mist">{x.icon}</a>
