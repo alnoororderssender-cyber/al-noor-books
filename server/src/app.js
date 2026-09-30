@@ -48,7 +48,16 @@ app.use(
     credentials: true,
   }),
 );
-  app.use(cookieParser());
+    app.use(cookieParser());
+
+  // TEMP DEBUG: remove after fixing login
+  app.use((req, _res, next) => {
+    if (req.path.includes('/admin/login')) {
+      console.log('[debug] content-type:', req.headers['content-type'], '| body keys:', Object.keys(req.body || {}));
+    }
+    next();
+  });
+
   app.use(sanitizeInput);
 
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
