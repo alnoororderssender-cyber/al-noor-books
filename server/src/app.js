@@ -39,8 +39,15 @@ export function createApp() {
       },
     }),
   );
-  app.use(cors({ origin: env.allowedOrigins, credentials: true }));
-  app.use(express.json({ limit: '100kb' }));
+app.use(
+  cors({
+    origin(origin, cb) {
+      if (!origin || env.allowedOrigins.includes(origin)) return cb(null, true);
+      return cb(null, false); // no CORS headers, instead of throwing a 500
+    },
+    credentials: true,
+  }),
+);
   app.use(cookieParser());
   app.use(sanitizeInput);
 
