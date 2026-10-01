@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="page flex items-center justify-between py-4">
           <p className="text-xs text-muted">&copy; AL NOOR BOOKS</p>
           <Link to="/admin/login" className="text-[12px] text-muted hover:text-navy">
-  Admin
+  Admin Portal
 </Link>
           <div className="flex items-center gap-3 text-navy">
             {socials.map((x) => (
