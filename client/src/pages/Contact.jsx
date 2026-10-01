@@ -33,8 +33,21 @@ export default function Contact() {
             <p className="text-sm text-muted sm:col-span-2">Store contact details will be available here soon.</p>
           ) : (
             <>
-              {s.address && <Item icon={MapPin} title="Visit our store"><span className="whitespace-pre-line">{s.address} - <a href="https://maps.app.goo.gl/AHrJCzFetqnxvBp87?g_st=ic">View on Google Maps</a></span></Item>}
-              {s.hours && <Item icon={Clock} title="Opening hours">{s.hours}</Item>}
+{s.address && (
+  <Item icon={MapPin} title="Visit our store">
+    <span className="whitespace-pre-line">
+      {s.address} -{' '}
+      <a
+        className="underline"
+        href="https://maps.app.goo.gl/AHrJCzFetqnxvBp87?g_st=ic"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on Google Maps
+      </a>
+    </span>
+  </Item>
+)}              {s.hours && <Item icon={Clock} title="Opening hours">{s.hours}</Item>}
               {s.phone && <Item icon={Phone} title="Phone"><a className="link" href={`tel:${s.phone.replace(/[^\d+]/g, '')}`}>{s.phone}</a></Item>}
               {s.email && <Item icon={Mail} title="Email"><a className="link" href={`mailto:${s.email}`}>{s.email}</a></Item>}
             </>
